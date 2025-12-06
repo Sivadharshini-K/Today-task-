@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PraRoz - Web Design & Development Course</title>
+    <style>
+        * {
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background:url("view.jpg");
+            color: #fff;
+        }
+
+        /* Animated Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+           background: linear-gradient(to top,rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%),url(Night.jpg);
+           background-position: center;
+           background-size: cover;
+            width:100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 80px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+              backdrop-filter: blur(10px);
+            
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: 600;
+            
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 80px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff6b35;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 0;
+        }
+
+        .search-input {
+            padding: 12px 20px;
+            border: 1px solid rgb(255, 132, 0);
+            border-right: none;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            background: transparent;
+            font-size: 14px;
+            width: 240px;
+            transition: all 0.3s;
+        }
+        .search-btn {
+
+            
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            border: none;
+            border-radius: 0 5px 5px 0;
+            color: #fff;
+             font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+      
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 120px 80px 60px;
+            gap: 60px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 650px;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            font-family:"playfair display";
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .hero-content h1 .highlight {
+            color: #ff6b35;
+            display: block;
+            font-family:"playfair display",Georgia;
+            font-size: 72px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #b8c5d6;
+            margin-bottom: 30px;
+        }
+
+        .cta-btn {
+            padding: 9px 50px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            border: none;
+            border-radius: 15px;
+            color:black;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+       
+
+        /* Login Card */
+        .login-card {
+            background: black;
+            border-radius: 18px;
+            height: 500px;
+            width:850px;
+            padding: 40px;
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+         .login-title {
+            background: whitesmoke;
+            color:#ff801f;;
+            padding: 8px;
+            border: none;
+            border-radius: 13px;
+            font-size: 25px;
+            font-weight: 640;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 100%;
+            background:transparent;
+            border: none;
+            border-bottom: solid rgb(255, 138, 49);
+            padding: 10px;
+            margin: 13px 0;
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            border: none;
+            border-radius: 8px;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .signup-text {
+            text-align: center;
+            color: #b8c5d6;
+            margin-bottom: 25px;
+        }
+
+        .signup-text a {
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .social-login {
+            text-align: center;
+        }
+
+        .social-login p {
+            color: #b8c5d6;
+            margin-bottom: 10px;
+        }
+
+        .social-icons a{
+            text-decoration:none;
+            color:#fff;
+          
+        }
+    .social-icons ion-icon{
+        color:#fff;
+        font-size:30px;
+        padding-left:14px;
+        padding-top:5px;
+        transition:0.3s ease;
+    }
+.social-icons ion-icon:hover{
+    color:#ff7200;
+}
+        
+
+        /* for login box alignment */
+        .tree-container {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width:300px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="stars" id="stars"></div>
+    </div>
+
+    <nav>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            PraRoz
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#service">SERVICE</a></li>
+            <li><a href="#design">DESIGN</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Type to Search">
+            <button class="search-btn">Search</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Web Design &
+                <span class="highlight">Development</span>
+                Course
+            </h1>
+            <p>
+                Web Design is a specialisation of the design stream. They also use HTML, <br>CSS, WYSIWYG editing software, markup validators etc.,
+                <br> to create design elements.
+            </p>
+            <button class="cta-btn">JOIN US</button>
+        </div>
+
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-title">Login Here</div>
+            </div>
+            <form>
+                <div class="input-group">
+                    <input type="email" placeholder="Enter Email Here" required >
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="Enter Password Here" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <div class="signup-text">
+                Don't have an account? <br>
+                <a href="#">Sign up</a> here
+            </div>
+            <div class="social-login">
+                <p>Log in with</p>
+                <div class="social-icons">
+                    <a href="#"><ion-icon name="logo-facebook" style="width:20px; height:20px;"></icon-icon></a>
+                    <a href="#"><ion-icon name="logo-instagram" style="width:20px; height:20px;"></icon-icon></a>
+                    <a href="#"><ion-icon name="logo-twitter" style="width:20px; height:20px;"</icon-icon></a>
+                    <a href="#"><ion-icon name="logo-google" style="width:20px; height:20px;"</icon-icon></a>
+                    <a href="#"><ion-icon name="logo-skype" style="width:20px; height:20px;"</icon-icon></a>
+              
+                </div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+        <div class="tree-container">
+            <div class="tree">
+                <div class="foliage"></div>
+                <div class="trunk"></div>
+            </div>
+            <div class="reflection">
+                <div class="foliage"></div>
+                <div class="trunk"></div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
